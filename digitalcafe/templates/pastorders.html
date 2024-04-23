@@ -1,0 +1,19 @@
+{% include "header.html" %}
+<h1>Past Orders</h1>
+
+{% if past_orders %}
+    <ul>
+        {% for order in past_orders %}
+            <li>Order Date: {{ order['orderdate'] }}</li>
+            <ul>
+                {% for item in order['details'] %}
+                    <li>{{ item['name'] }} - Quantity: {{ item['qty'] }} - Subtotal: {{ item['subtotal'] }}</li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No orders have been made yet.</p>
+{% endif %}
+
+{% include "footer.html" %}
